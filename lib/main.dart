@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_api/bloc/text_theme_cubit/text_theme_cubit.dart';
 import 'package:weather_api/repository/weather_repository.dart';
 import 'package:weather_api/screens/home_page.dart';
 
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<TempSettingsCubit>(
             create: (context) => TempSettingsCubit(),
+          ),
+          BlocProvider<TextThemeCubit>(
+            create: (context) => TextThemeCubit(),
           ),
         ],
         child: MaterialApp(

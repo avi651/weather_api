@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_api/bloc/text_theme_cubit/text_theme_cubit.dart';
 
 import '../bloc/temp_settings/temp_settings_cubit.dart';
 
@@ -26,6 +27,25 @@ class SettingsScreen extends StatelessWidget {
                     TempUnit.Celsius,
                 onChanged: (_) {
                   context.read<TempSettingsCubit>().toggleTempUnit();
+                },
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Text(
+                      'Temparature Unit: ${context.watch<TempSettingsCubit>().state.enumToString()}'),
+                  const Text('Dark/Light'),
+                ],
+              ),
+              Switch(
+                value: context.watch<TextThemeCubit>().state.textTheme ==
+                    TextThemes.Light,
+                onChanged: (_) {
+                  context.read<TextThemeCubit>().changeTextTheme();
                 },
               ),
             ],

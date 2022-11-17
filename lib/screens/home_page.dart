@@ -8,6 +8,7 @@ import 'package:weather_api/screens/settings_page.dart';
 import '../bloc/weather_bloc/weather_state.dart';
 import '../components/weather_components.dart';
 import '../helpers/create_route.dart';
+import '../helpers/show_text_theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -63,10 +64,10 @@ class _HomePageState extends State<HomePage> {
             return Center(
                 child: Text(
               showTemperature(state.weatherModel.main!.temp ?? 0.0, context),
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
-                color: Colors.red,
+                color: getTextColor(context),
               ),
             )); //WeatherComponents(weatherModel: state.weatherModel));
           } else if (state is WeatherStateError) {
